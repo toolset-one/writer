@@ -56,7 +56,7 @@ textarea {
 	background:#FFF;
 	resize: none;
 	outline:none;
-	padding:48px 120px;
+	padding:48px calc(100% / 2 - 312px);
 	font-family: monospace;
 	font-size:16.5px;
 	line-height: 30px;
