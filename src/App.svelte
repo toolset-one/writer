@@ -2,18 +2,25 @@
 	import { onMount } from 'svelte';
 	import { routerStore } from './stores/router-store.js'
 	import { authStore, authInit } from './stores/auth-store.js'
+	import { textsStore, textsStoreInit } from './stores/texts-store.js'
 
 	import ViewSignIn from './sign-in/view.sign-in.svelte'
 	import ViewValidateSignIn from './sign-in/view.validate-sign-in.svelte'
+	import IndexView from './index/view.index.svelte'
 
 	onMount(() => {
 		authInit()
+		textsStoreInit()
 	})
 
 </script>
 
 {#if $authStore.inited && $authStore.user != null}
-	App
+	
+	{#if $routerStore.view === 'index'}
+		<IndexView />
+	{/if}
+
 {:else if $authStore.inited && $authStore.user === null}
 
 	{#if $routerStore.view === 'validate-sign-in'}
