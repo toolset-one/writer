@@ -1,71 +1,65 @@
 <script>
 	import { onMount } from 'svelte';
-	import { textsStore } from '../stores/texts-store.js'
+	import { textsStore, textsStoreChangeText } from '../stores/texts-store.js'
+
+	let text = ''
 
 	onMount(() => {
-		
+		textsStore.subscribe(data => {
+			text = (data.textActive && data.textActive.text != text) ? data.textActive.text : text
+		})
 	})
+
+	function textChanged(e) {
+		textsStoreChangeText($textsStore.textActive.id, text)
+	}
 
 </script>
 
-<section class="small-container">
+
 
 	<a href="/">
-		Back
+		← Back
 	</a>
 
-	<h2>
-		Text
-	</h2>
-
 	{#if $textsStore.textActive}
-		<p>
-			{JSON.stringify($textsStore.textActive)}
-		</p>
+		<textarea 
+			bind:value={text}
+			on:input={e => textChanged(e)}
+		></textarea>
 	{/if}
 
 
-</section>
-
-
 <style>
-.small-container {
-	margin:30px auto;
-	max-width: 420px;
-	width:80%;
-}
 
-h2 {
-	margin:0 0 12px 0;
-	padding:0;
-	font-size:24px;
+a {
+	display:block;
+	position: absolute;
+	top:6px;
+	left:50%;
+	transform: translateX(-50%);
 	line-height: 30px;
-	font-family:georgia;
-	font-weight:400;
+	z-index: 100;
+	font-size: 13.2px;
 }
 
-@media (min-width: 600px) {
-	h2 {
-		font-size:34px;
-		line-height: 36px;
-	}
-}
-
-p {
-	margin:0 0 24px 0;
-	padding:0;
-	font-size:13.2px;
-	line-height: 24px;
-	font-weight:400;
-}
-
-@media (min-width: 600px) {
-
-	p {
-		margin:0 0 36px 0;
-		font-size:16.5px;
-		line-height: 30px;
-	}
+textarea {
+	display:block;
+	border:0;
+	position: absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	width:100%;
+	height:100%;
+	background:#FFF;
+	resize: none;
+	outline:none;
+	padding:48px 120px;
+	font-family: monospace;
+	font-size:16.5px;
+	line-height: 30px;
 }
 
 </style>

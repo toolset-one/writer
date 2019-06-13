@@ -77,3 +77,10 @@ export function textsStoreNewText(cb) {
 	})
 	unsubscribe()
 }
+
+
+export function textsStoreChangeText(id, text) {
+	firebase.db.collection('texts').doc(id).update({
+		text
+	})
+}
