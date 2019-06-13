@@ -6,7 +6,10 @@
 
 	onMount(() => {
 		textsStore.subscribe(data => {
-			text = (data.textActive && data.textActive.text != text) ? data.textActive.text : text
+			if(data.textActive) {
+				const newText = data.textActive.text ? data.textActive.text : ''
+				text = newText != text ? newText : text
+			}
 		})
 	})
 
@@ -23,7 +26,8 @@
 	</a>
 
 	{#if $textsStore.textActive}
-		<textarea 
+		<textarea
+			placeholder="Click here to write text"
 			bind:value={text}
 			on:input={e => textChanged(e)}
 		></textarea>

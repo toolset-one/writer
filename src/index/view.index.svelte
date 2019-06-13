@@ -6,19 +6,21 @@
 		
 	})
 
+	function getTextForList(text) {
+		const trimmedText = text.substr(0, 100),
+			wordTrimmedText = trimmedText.substr(0, Math.min(trimmedText.length, trimmedText.lastIndexOf(' ')))
+			return wordTrimmedText +'…'
+	}
+
 </script>
 
 <section class="small-container">
-
-	<h2>
-		Index
-	</h2>
 
 	<ul>
 		{#each $textsStore.array as text}
 			<li>
 				<a href="/text/{text.id}">
-					Text {text.id}
+					{getTextForList(text.text)}
 				</a>
 			</li>
 		{/each}
@@ -40,23 +42,13 @@
 	width:80%;
 }
 
-h2 {
-	margin:0 0 12px 0;
+ul {
+	list-style: none;
+	margin:0;
 	padding:0;
-	font-size:24px;
-	line-height: 30px;
-	font-family:georgia;
-	font-weight:400;
 }
 
-@media (min-width: 600px) {
-	h2 {
-		font-size:34px;
-		line-height: 36px;
-	}
-}
-
-p {
+li {
 	margin:0 0 24px 0;
 	padding:0;
 	font-size:13.2px;
@@ -64,13 +56,12 @@ p {
 	font-weight:400;
 }
 
+a {
+	color:#222;
+}
+
 @media (min-width: 600px) {
 
-	p {
-		margin:0 0 36px 0;
-		font-size:16.5px;
-		line-height: 30px;
-	}
 }
 
 </style>
