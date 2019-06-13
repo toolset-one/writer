@@ -7,6 +7,7 @@
 	import ViewSignIn from './sign-in/view.sign-in.svelte'
 	import ViewValidateSignIn from './sign-in/view.validate-sign-in.svelte'
 	import IndexView from './index/view.index.svelte'
+	import TextView from './text/view.text.svelte'
 
 	onMount(() => {
 		authInit()
@@ -19,6 +20,8 @@
 	
 	{#if $routerStore.view === 'index'}
 		<IndexView />
+	{:else if $routerStore.view === 'text'}
+		<TextView />
 	{/if}
 
 {:else if $authStore.inited && $authStore.user === null}
