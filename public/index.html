@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='utf8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="manifest" href="/manifest.json" />
+
+	<title>
+		Writer – Toolset One
+	</title>
+
+	<link rel='stylesheet' href='/global.css'>
+	<link rel='stylesheet' href='/bundle.css'>
+</head>
+
+<body>
+
+
+  	<script src="/firebase-app.js"></script>
+	<script src="/firebase-auth.js"></script>
+	<script src="/firebase-firestore.js"></script>
+	<script src="/firebase-storage.js"></script>
+
+	<script>
+		const loadedTime = Date.now()
+
+		if (!navigator.serviceWorker.controller) {
+			navigator.serviceWorker.register('/service-worker.js', {
+			scope: '/'
+			}).then(reg => {
+				console.log(reg.scope, 'register')
+				console.log('Service worker change, registered the service worker')
+			})
+		}
+
+	const initFirebase = () => {
+		firebase.initializeApp({
+			apiKey: "AIzaSyALyrCawiv4BtO6Lpu5OatuNKK10GSTG_k",
+			authDomain: "tiap-writer.firebaseapp.com",
+			databaseURL: "https://tiap-writer.firebaseio.com",
+			projectId: "tiap-writer",
+			storageBucket: "tiap-writer.appspot.com",
+			messagingSenderId: "240442505368"
+		})
+
+		firebase.db = firebase.firestore()
+		firebase.store = firebase.storage()
+
+		firebase.db.settings({ 
+			timestampsInSnapshots: true
+		})
+
+		firebase.db.enablePersistence({
+			experimentalTabSynchronization: true
+		}).catch(err => {
+			console.log(err)
+		})
+
+		firebase.auth().onAuthStateChanged(user => {})
+	}
+
+	initFirebase()
+	</script>
+	
+	<script src='/bundle.js'></script>
+</body>
+</html>

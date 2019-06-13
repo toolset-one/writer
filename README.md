@@ -1,2 +1,2 @@
 # writer
-A simple writer app.
+A tiny writing app.
