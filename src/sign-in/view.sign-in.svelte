@@ -29,7 +29,7 @@
 	{#if !emailSuccessfullySent}
 
 	<p>
-		Type in your email address. You'll get an link to sign in to this email address.
+		Type in your email address. You'll get an link to sign in to your mailbox.
 	</p>
 
 	<form on:submit|preventDefault={e => submit(e)}>

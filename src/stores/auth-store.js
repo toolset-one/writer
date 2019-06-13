@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 const ACTION_CODE_SETTINGS = {
-	url: 'http://'+ (window.location.href.includes('localhost') ? 'localhost:10002' : 'tiap-writer.web.app') +'/validate-sign-in/',
+	url: 'http://'+ (window.location.href.includes('localhost') ? 'localhost:10002' : 'writer.toolset.one') +'/validate-sign-in/',
 	handleCodeInApp: true
 }
 
