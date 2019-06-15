@@ -9,7 +9,7 @@
 	function getTextForList(text) {
 
 		text = text ? text : 'Empty Document'
-		
+
 		if(text.length >= 100) {
 			const trimmedText = text.substr(0, 100),
 				wordTrimmedText = trimmedText.substr(0, Math.min(trimmedText.length, trimmedText.lastIndexOf(' ')))
@@ -34,8 +34,8 @@
 	</ul>
 	
 
-	<button on:click={e =>textsStoreNewText()}>
-		New Text
+	<button class="button button-icon" on:click={e =>textsStoreNewText()}>
+		+
 	</button>
 
 
@@ -44,7 +44,8 @@
 
 <style>
 .small-container {
-	margin:30px auto;
+	margin:0 auto;
+	padding:60px 0;
 	max-width: 420px;
 	width:80%;
 }
@@ -58,13 +59,30 @@ ul {
 li {
 	margin:0 0 24px 0;
 	padding:0;
-	font-size:13.2px;
-	line-height: 24px;
+	font-size:14px;
+	line-height: 18px;
 	font-weight:400;
+	font-family: Courier, "Courier New", monospace;
 }
 
 a {
 	color:#222;
+	display:block;
+	border:#CCC 1px solid;
+	border-radius: 2px;
+	padding:23px 29px;
+}
+
+a:hover {
+	text-decoration: none;
+	background:#FAFAFA;
+}
+
+.button {
+	position: absolute;
+	top:12px;
+	left:50%;
+	transform: translateX(-50%);
 }
 
 @media (min-width: 600px) {

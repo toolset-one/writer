@@ -21,8 +21,8 @@
 
 
 
-	<a href="/">
-		← Back
+	<a href="/" class="button button-icon">
+		←
 	</a>
 
 	{#if $textsStore.textActive}
@@ -36,15 +36,12 @@
 
 <style>
 
-a {
-	display:block;
+.button {
 	position: absolute;
-	top:6px;
+	top:12px;
 	left:50%;
 	transform: translateX(-50%);
-	line-height: 30px;
-	z-index: 100;
-	font-size: 13.2px;
+	z-index:10;
 }
 
 textarea {
@@ -60,10 +57,10 @@ textarea {
 	background:#FFF;
 	resize: none;
 	outline:none;
-	padding:48px calc(100% / 2 - 312px);
-	font-family: monospace;
+	padding:60px calc(100% / 2 - 312px) 30px calc(100% / 2 - 312px);
 	font-size:16.5px;
 	line-height: 30px;
+	font-family: Courier, "Courier New", monospace;
 }
 
 </style>

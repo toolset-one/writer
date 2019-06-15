@@ -98,52 +98,6 @@ p {
 }
 
 
-.button {
-	margin:0;
-	border:#333 1px solid;
-	padding:5px 17px 5px 23px;
-	line-height: 24px;
-	font-size: 14px;
-	background:#FCFCFC;
-	border-radius: 4px;
-	box-shadow: none;
-	outline:none;
-	font-weight:400;
-	color:#333;
-	cursor: pointer;
-	box-shadow:0 3px 0 #FFF inset, 0 -3px 0 #DDD inset;
-	outline-style: solid;
-    outline-color: rgba(0, 0, 255, .25);
-    outline-width: 0;
-    outline-offset: 2px;
-    transition: box-shadow 100ms ease, color 100ms ease, border-color 100ms ease;
-}
-
-.button:hover {
-	border-color:#222;
-	color:#222;
-	box-shadow:0 4px 0 #FFF inset, 0 -2px 0 #DDD inset;
-}
-
-.button:focus {
-	outline-width: 4px;
-}
-
-.button.disabled {
-	color:#999;
-	border-color:#999;
-	box-shadow:0 3px 0 #FFF inset;
-	cursor:default;
-}
-
-.button.disabled:hover {
-	color:#999;
-	border-color:#999;
-	box-shadow:0 3px 0 #FFF inset;
-}
-
-
-
 .input-wrapper {
 	position: relative;
 	margin:0 0 18px 0;
