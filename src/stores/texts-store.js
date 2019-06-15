@@ -42,14 +42,18 @@ function setListener() {
 
 						textsStore.update(data => {
 							data.json[textData.id] = textData
-							data.array = Object.keys(data.json).map(el => data.json[el])
+							data.array = (Object.keys(data.json).map(el => data.json[el])).sort((a, b) => 
+								(b.updated ? b.updated.toDate() : 0) - (a.updated ? a.updated.toDate() : 0)
+							)
 							data.textActive = (data.json && data.json[textId]) ? data.json[textId] : null
 							return data
 						})
 					} else if (change.type === 'removed') {
 						textsStore.update(data => {
 							delete data.json[change.doc.data().slug]
-							data.array = Object.keys(data.json).map(el => data.json[el])
+							data.array = (Object.keys(data.json).map(el => data.json[el])).sort((a, b) => 
+								(b.updated ? b.updated.toDate() : 0) - (a.updated ? a.updated.toDate() : 0)
+							)
 							data.textActive = (data.json && data.json[textId]) ? data.json[textId] : null
 							return data
 						})
@@ -81,6 +85,7 @@ export function textsStoreNewText(cb) {
 
 export function textsStoreChangeText(id, text) {
 	firebase.db.collection('texts').doc(id).update({
-		text
+		text,
+		updated: new Date()
 	})
 }

@@ -41,13 +41,11 @@
 	}
 </script>
 
-	{#if !navBarHidden && $textsStore.textActive}
-		<div class="nav-bar" out:fade='{{duration: 100}}' in:fade='{{duration: 100}}'>
-			<a href="/" class="button button-icon">
-				←
-			</a>
-		</div>
-	{/if}
+	<div class="nav-bar {navBarHidden ? 'hidden' : ''}" >
+		<a href="/" class="button button-icon">
+			←
+		</a>
+	</div>
 
 	{#if $textsStore.textActive}
 		<textarea
@@ -72,10 +70,12 @@
 	transform:translateX(-50%);
 	text-align: center;
 	padding:12px 0;
+	transition: opacity 100ms ease;
 }
 
 .nav-bar.hidden {
 	opacity:0;
+	pointer-events: none;
 }
 
 .button {
