@@ -1,10 +1,13 @@
 <script>
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import { textsStore, textsStoreChangeText } from '../stores/texts-store.js'
 
 
 	let text = '',
-	debounceTimeOut = null
+	debounceTimeOut = null,
+	fadeTimeOut = null,
+	navBarHidden = false
 
 
 	onMount(() => {
@@ -17,7 +20,7 @@
 	})
 
 
-	function textChanged(e) {
+	function textChanged() {
 
 		const id = $textsStore.textActive.id
 
@@ -30,31 +33,53 @@
 		}, 1000)
 	}
 
+
+	function hideNavBar() {
+		fadeTimeOut = setTimeout(() => {
+			navBarHidden = true
+		}, 1000)
+	}
 </script>
 
-
-
-	<a href="/" class="button button-icon">
-		←
-	</a>
+	{#if !navBarHidden && $textsStore.textActive}
+		<div class="nav-bar" out:fade='{{duration: 100}}' in:fade='{{duration: 100}}'>
+			<a href="/" class="button button-icon">
+				←
+			</a>
+		</div>
+	{/if}
 
 	{#if $textsStore.textActive}
 		<textarea
 			placeholder="Click here to write text"
 			bind:value={text}
-			on:input={e => textChanged(e)}
+			on:input={e => textChanged()}
+			on:keydown={e => hideNavBar()}
+			on:mousemove={e => navBarHidden = false}
+			on:blur={e => navBarHidden = false}
 		></textarea>
 	{/if}
 
 
 <style>
 
-.button {
+.nav-bar {
 	position: absolute;
-	top:12px;
+	top:0;
 	left:50%;
-	transform: translateX(-50%);
+	width: 624px;
 	z-index:10;
+	transform:translateX(-50%);
+	text-align: center;
+	padding:12px 0;
+}
+
+.nav-bar.hidden {
+	opacity:0;
+}
+
+.button {
+	display: block;
 }
 
 textarea {

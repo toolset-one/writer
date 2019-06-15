@@ -46,7 +46,7 @@
 .small-container {
 	margin:0 auto;
 	padding:60px 0;
-	max-width: 420px;
+	max-width: 624px;
 	width:80%;
 }
 
@@ -59,8 +59,8 @@ ul {
 li {
 	margin:0 0 24px 0;
 	padding:0;
-	font-size:14px;
-	line-height: 18px;
+	font-size:16.5px;
+	line-height: 30px;
 	font-weight:400;
 	font-family: Courier, "Courier New", monospace;
 }
@@ -69,7 +69,7 @@ a {
 	color:#333;
 	display:block;
 	border-radius: 2px;
-	padding:29px 35px;
+	padding:23px 59px;
 	background:#FFF;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 3px 12px rgba(0, 0, 0, .025);
 	transition:all 100ms ease;
