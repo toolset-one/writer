@@ -7,9 +7,16 @@
 	})
 
 	function getTextForList(text) {
-		const trimmedText = text.substr(0, 100),
-			wordTrimmedText = trimmedText.substr(0, Math.min(trimmedText.length, trimmedText.lastIndexOf(' ')))
-			return wordTrimmedText +'…'
+
+		text = text ? text : 'Empty Document'
+		
+		if(text.length >= 100) {
+			const trimmedText = text.substr(0, 100),
+				wordTrimmedText = trimmedText.substr(0, Math.min(trimmedText.length, trimmedText.lastIndexOf(' ')))
+				return wordTrimmedText +'…'
+		}
+
+		return text
 	}
 
 </script>

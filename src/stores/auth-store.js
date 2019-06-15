@@ -52,7 +52,7 @@ export function authSendEmail(email, cb) {
 }
 
 
-export function authValidateLink() {
+export function authValidateLink(cb) {
 
 	if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
 	
@@ -63,8 +63,12 @@ export function authValidateLink() {
 
 		firebase.auth().signInWithEmailLink(email, window.location.href).then(res => {
 			window.localStorage.removeItem('emailForSignIn')
+			cb(true)
 		}).catch(err => {
 			console.log(err)
+			cb(false)
 		})
+	} else {
+		cb(false)
 	}
 }

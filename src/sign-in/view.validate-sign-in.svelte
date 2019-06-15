@@ -1,11 +1,14 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount } from 'svelte'
+	import Page from 'page'
 	import { authStore, authValidateLink } from '../stores/auth-store.js'
-
 	
-	onMount(() => {
-		authValidateLink()
-	})
+
+	onMount(() =>
+		authValidateLink(success => 
+			Page(success ? '/' : '/sign-in/')
+		)
+	)
 
 
 </script>
