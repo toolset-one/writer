@@ -2,7 +2,10 @@
 	import { onMount } from 'svelte';
 	import { textsStore, textsStoreChangeText } from '../stores/texts-store.js'
 
-	let text = ''
+
+	let text = '',
+	debounceTimeOut = null
+
 
 	onMount(() => {
 		textsStore.subscribe(data => {
@@ -13,8 +16,18 @@
 		})
 	})
 
+
 	function textChanged(e) {
-		textsStoreChangeText($textsStore.textActive.id, text)
+
+		const id = $textsStore.textActive.id
+
+		if(debounceTimeOut) {
+			clearTimeout(debounceTimeOut)
+		}
+
+		debounceTimeOut = setTimeout(() => {
+			textsStoreChangeText(id, text)
+		}, 1000)
 	}
 
 </script>
