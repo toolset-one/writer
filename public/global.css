@@ -10,6 +10,7 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 	font-family: Verdana, sans-serif;
+	background:#FEFEFE;
 }
 
 * {
@@ -17,7 +18,7 @@ body {
 }
 
 a {
-	color: rgb(0,100,200);
+	color: rgb(0, 100, 200);
 	text-decoration: none;
 }
 
@@ -26,7 +27,7 @@ a:hover {
 }
 
 a:visited {
-	color: rgb(0,80,160);
+	
 }
 
 label {
@@ -67,18 +68,19 @@ button:focus {
 
 .button {
 	margin:0;
-	border:#333 1px solid;
+	border:#FFF 0 solid;
 	padding:5px 23px;
 	line-height: 24px;
 	font-size: 14px;
-	background:#FCFCFC;
+	background:#FFF;
 	border-radius: 4px;
 	box-shadow: none;
 	outline:none;
 	font-weight:400;
-	color:#333;
+	color:blue;
 	cursor: pointer;
-	box-shadow:0 3px 0 #FFF inset, 0 -3px 0 #DDD inset;
+	box-shadow:0 3px 0 #FFF inset, 0 -2px 0 #AAA inset;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 3px 12px rgba(0, 0, 0, .025);
 	outline-style: solid;
     outline-color: rgba(0, 0, 255, .25);
     outline-width: 0;
@@ -88,9 +90,9 @@ button:focus {
 }
 
 .button:hover {
-	border-color:#222;
-	color:#222;
-	box-shadow:0 4px 0 #FFF inset, 0 -2px 0 #DDD inset;
+	border-color:#333;
+	color:#333;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 3px 12px rgba(0, 0, 0, .025);
 	text-decoration: none;
 }
 
@@ -116,7 +118,7 @@ button:focus {
 	height:36px;
 	border-radius: 50%;
 	font-size:20px;
-	line-height: 30px;
+	line-height: 36px;
 	padding:0 0 4px 0;
 }
 

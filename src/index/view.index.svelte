@@ -66,16 +66,19 @@ li {
 }
 
 a {
-	color:#222;
+	color:#333;
 	display:block;
-	border:#CCC 1px solid;
 	border-radius: 2px;
-	padding:23px 29px;
+	padding:29px 35px;
+	background:#FFF;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 3px 12px rgba(0, 0, 0, .025);
+	transition:all 100ms ease;
 }
 
 a:hover {
 	text-decoration: none;
-	background:#FAFAFA;
+	color:blue;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 3px 12px rgba(0, 0, 0, .025);
 }
 
 .button {

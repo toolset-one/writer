@@ -81,7 +81,7 @@ h2 {
 }
 
 p {
-	margin:0 0 24px 0;
+	margin:0 0 12px 0;
 	padding:0;
 	font-size:13.2px;
 	line-height: 24px;
@@ -91,7 +91,7 @@ p {
 @media (min-width: 600px) {
 
 	p {
-		margin:0 0 36px 0;
+		margin:0 0 18px 0;
 		font-size:16.5px;
 		line-height: 30px;
 	}
@@ -100,14 +100,24 @@ p {
 
 .input-wrapper {
 	position: relative;
-	margin:0 0 18px 0;
+	margin:0 0 30px 0;
 	max-width:100%;
-	width:600px;
-}	
+}
 
-.input-wrapper-big {
-	margin:0 24px;
-	width:auto;
+.input-wrapper:before, .input-wrapper:after {
+	content:"";
+	display:block;
+	width:2px;
+	height:6px;
+	position: absolute;
+	bottom:0;
+	left:0;
+	background:#333;
+}
+
+.input-wrapper:after {
+	left:auto;
+	right:0;
 }
 
 .input-wrapper label {
@@ -128,15 +138,16 @@ p {
 	width:100%;
 	max-width:100%;
 	margin:0;
-	border:#333 1px solid;
-	padding:20px 17px 20px 17px;
+	border:0;
+	border-bottom:#333 2px solid;
+	padding:14px 17px 14px 17px;
 	line-height: 24px;
 	font-size: 16.5px;
-	background:#FFF;
-	border-radius: 2px;
+	background:#FAFAFA;
+	border-radius: 0px;
 	box-shadow: none;
 	caret-color:#333;
-	box-shadow: 0 0 0 100px #FFF inset;
+	box-shadow: 0 0 0 100px #FAFAFA inset;
 	outline-style: solid;
     outline-color: rgba(0, 0, 255, .25);
     outline-width: 0;
@@ -144,11 +155,11 @@ p {
 }
 
 .input-wrapper input:focus {
-    outline-width: 4px;
+    outline-width: 0px;
 }
 
 .input-wrapper input:not(:placeholder-shown) {
-	padding:28px 17px 12px 17px;
+	padding:22px 17px 6px 17px;
 }
 
 .input-wrapper input:not(:placeholder-shown):valid  {
@@ -157,7 +168,7 @@ p {
 
 
 .input-wrapper input:not(:placeholder-shown) + label {
-	top:20px;
+	top:12px;
 	color:#222;
 }
 
