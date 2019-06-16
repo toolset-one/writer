@@ -63,7 +63,7 @@
 
 .nav-bar {
 	position: absolute;
-	top:0;
+	bottom:0;
 	left:50%;
 	width: 624px;
 	z-index:10;
@@ -71,6 +71,16 @@
 	text-align: center;
 	padding:12px 0;
 	transition: opacity 100ms ease;
+	max-width:100%;
+	background:#FFF;
+}
+
+@media (min-width:600px) {
+	.nav-bar {
+		width: 624px;
+		bottom:auto;
+		top:0;
+	}
 }
 
 .nav-bar.hidden {
@@ -80,6 +90,7 @@
 
 .button {
 	display: block;
+	margin:0 30px;
 }
 
 textarea {
@@ -95,10 +106,18 @@ textarea {
 	background:#FFF;
 	resize: none;
 	outline:none;
-	padding:60px calc(100% / 2 - 312px) 30px calc(100% / 2 - 312px);
-	font-size:16.5px;
-	line-height: 30px;
+	padding:30px 30px 30px 30px;
+	font-size:13.2px;
+	line-height: 24px;
 	font-family: Courier, "Courier New", monospace;
+}
+
+@media (min-width:600px) {
+	textarea {
+		padding:60px calc(100% / 2 - 312px) 30px calc(100% / 2 - 312px);
+		font-size:16.5px;
+		line-height: 30px;
+	}
 }
 
 </style>
