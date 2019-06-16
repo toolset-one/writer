@@ -65,12 +65,15 @@ function setListener() {
 }
 
 
-
 export function textsStoreNewText(cb) {
 
 	const unsubscribe = authStore.subscribe(authData => {
 		firebase.db.collection('texts').doc().set({
-			user: authData.user.id
+			user: authData.user.id,
+			excerpt: '',
+			text: '',
+			updated: new Date(),
+			created: new Date()
 		}).then(() => {
 			console.log('document created');
 			cb(true)
@@ -86,6 +89,24 @@ export function textsStoreNewText(cb) {
 export function textsStoreChangeText(id, text) {
 	firebase.db.collection('texts').doc(id).update({
 		text,
+		excerpt: getExcerpt(text),
 		updated: new Date()
 	})
+}
+
+
+function getExcerpt(text) {
+
+	if(text.length > 100) {
+
+		if(text.split('\n')[0].length <= 100) {
+			return	text.split('\n')[0]
+		}
+
+		const trimmedText = text.substr(0, 100),
+			wordTrimmedText = trimmedText.substr(0, Math.min(trimmedText.length, trimmedText.lastIndexOf(' ')))
+			return wordTrimmedText +'…'
+	}
+
+	return text
 }

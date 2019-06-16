@@ -6,19 +6,6 @@
 		
 	})
 
-	function getTextForList(text) {
-
-		text = text ? text : 'Empty Document'
-
-		if(text.length >= 100) {
-			const trimmedText = text.substr(0, 100),
-				wordTrimmedText = trimmedText.substr(0, Math.min(trimmedText.length, trimmedText.lastIndexOf(' ')))
-				return wordTrimmedText +'…'
-		}
-
-		return text
-	}
-
 </script>
 
 <section class="small-container">
@@ -27,7 +14,7 @@
 		{#each $textsStore.array as text}
 			<li>
 				<a href="/text/{text.id}">
-					{getTextForList(text.text)}
+					{text.excerpt}
 				</a>
 			</li>
 		{/each}
