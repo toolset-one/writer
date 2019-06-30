@@ -19,7 +19,7 @@
 	<script src="/firebase-app.js"></script>
 	<script src="/firebase-auth.js"></script>
 	<script src="/firebase-firestore.js"></script>
-	<script src="/firebase-storage.js"></script>
+	<!--<script src="/firebase-storage.js"></script>-->
 
 	<script>
 		const loadedTime = Date.now()
@@ -45,7 +45,6 @@
 		})
 
 		firebase.db = firebase.firestore()
-		firebase.store = firebase.storage()
 
 		firebase.db.settings({ 
 			timestampsInSnapshots: true

@@ -14,7 +14,7 @@
 		{#each $textsStore.array as text}
 			<li>
 				<a href="/text/{text.id}">
-					{text.excerpt}
+					{text.excerpt != '' ? text.excerpt : 'Empty Document'}
 				</a>
 			</li>
 		{/each}
