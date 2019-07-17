@@ -16,16 +16,13 @@ export const authStore = writable({
 export function authInit() {
 	var timeStart = Date.now()
 
-	console.log(Date.now() - loadedTime)
-
-	firebase.auth().onAuthStateChanged(user => {
-		console.log('T', 'AUTH STATE CHANGED', Date.now() - timeStart, firebase.auth().currentUser)
-		if (user) {
+	panda.auth.subscribe(user => {
+		if(user) {
 			authStore.set({
 				inited: true,
 				hasAuth: true,
 				user: {
-					id: user.uid,
+					id: user.id,
 					email: user.email
 				}
 			})
@@ -42,33 +39,27 @@ export function authInit() {
 
 
 export function authSendEmail(email, cb) {
-	firebase.auth().sendSignInLinkToEmail(email, ACTION_CODE_SETTINGS).then(() => {
+
+	panda.auth.sendEmailToken(email).then(() => {
 		window.localStorage.setItem('emailForSignIn', email)
 		cb(true)
 	}).catch(err => {
-		console.log(err)
+		console.log('ERR', err)
 		cb(false)
 	})
 }
 
 
-export function authValidateLink(cb) {
+export function authValidateLink(token, cb) {
 
-	if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
-	
-		var email = window.localStorage.getItem('emailForSignIn')
-		if (!email) {
-			email = window.prompt('Please provide your email for confirmation');
-		}
+	const email = window.localStorage.getItem('emailForSignIn')
+	// email = window.prompt('Please provide your email for confirmation');
 
-		firebase.auth().signInWithEmailLink(email, window.location.href).then(res => {
-			window.localStorage.removeItem('emailForSignIn')
-			cb(true)
-		}).catch(err => {
-			console.log(err)
-			cb(false)
-		})
-	} else {
+	console.log('TTTT')
+	panda.auth.verifyEmailToken(email, token).then(res => {
+		cb(true)
+	}).catch(err => {
+		console.log('ERR', err)
 		cb(false)
-	}
+	})
 }

@@ -21,10 +21,10 @@ Page('/', data =>
 	})
 )
 
-Page('/validate-sign-in/', data => 
+Page('/validate-sign-in/:token/', data => 
 	routerStore.set({
 		view: 'validate-sign-in',
-		id: null
+		token: data.params.token
 	})
 )
 

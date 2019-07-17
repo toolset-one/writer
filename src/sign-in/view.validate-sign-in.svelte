@@ -2,11 +2,14 @@
 	import { onMount } from 'svelte'
 	import Page from 'page'
 	import { authStore, authValidateLink } from '../stores/auth-store.js'
+	import { routerStore } from '../stores/router-store.js'
 	
 
 	onMount(() =>
-		authValidateLink(success => 
-			Page(success ? '/' : '/sign-in/')
+		routerStore.subscribe(data =>
+			authValidateLink(data.token, success => {
+				console.log('authValidateLink', success)
+			})
 		)
 	)
 

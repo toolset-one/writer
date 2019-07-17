@@ -1,0 +1,11 @@
+{
+  "name": "toolset-one-writer-server",
+  "version": "0.1.0",
+  "description": "The server for toolset-one-writer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Benjamin Kowalski",
+  "license": "ISC"
+}

@@ -15,51 +15,11 @@
 
 <body>
 
-
-	<script src="/firebase-app.js"></script>
-	<script src="/firebase-auth.js"></script>
-	<script src="/firebase-firestore.js"></script>
-	<!--<script src="/firebase-storage.js"></script>-->
+	<script src='/panda.js'></script>
+	<script src='/koala.js'></script>
 
 	<script>
 		const loadedTime = Date.now()
-
-		/* if (!navigator.serviceWorker.controller) {
-			navigator.serviceWorker.register('/service-worker.js', {
-			scope: '/'
-			}).then(reg => {
-				console.log(reg.scope, 'register')
-				console.log('Service worker change, registered the service worker')
-			})
-		}*/
-
-	const initFirebase = () => {
-		firebase.initializeApp({
-			apiKey: "AIzaSyAA2C-Yo9wE-HUKGyDfKXECZNcPUQ4OtAU",
-			authDomain: "toolset-one-writer.firebaseapp.com",
-			databaseURL: "https://toolset-one-writer.firebaseio.com",
-			projectId: "toolset-one-writer",
-			storageBucket: "",
-			messagingSenderId: "1056119218353",
-			appId: "1:1056119218353:web:2e8afb79145a11e5"
-		})
-
-		firebase.db = firebase.firestore()
-
-		firebase.db.settings({ 
-			timestampsInSnapshots: true
-		})
-
-		firebase.db.enablePersistence({
-			experimentalTabSynchronization: true
-		}).catch(err => {
-			console.log(err)
-		})
-
-		firebase.auth().onAuthStateChanged(user => {})
-	}
-
-	initFirebase()
 	</script>
 	
 	<script src='/bundle.js'></script>

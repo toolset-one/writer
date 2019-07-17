@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { authStore, authSendEmail } from '../stores/auth-store.js'
 
-	let email = '',
+	let email = 'Benjamin.Kowalski.1987@gmail.com',
 		emailSuccessfullySent = false
 
 	onMount(() => {
