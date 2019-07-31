@@ -3,6 +3,8 @@
 	import { fade } from 'svelte/transition';
 	import { textsStore, textsStoreChangeText } from '../stores/texts-store.js'
 
+	import UiButton from '../ui/ui-button.svelte'
+
 
 	let text = '',
 	debounceTimeOut = null,
@@ -42,9 +44,18 @@
 </script>
 
 	<div class="nav-bar {navBarHidden ? 'hidden' : ''}" >
-		<a href="/" class="button button-icon">
-			←
-		</a>
+		<div class="button-wrapper">
+			<UiButton 
+				type="icon"
+				icon="arrow-left"
+				link="/" />
+		</div>
+		<div class="button-wrapper">
+			<UiButton 
+				type="icon"
+				icon="burger"
+				on:click={e => alert('NAV')}/>
+		</div>
 	</div>
 
 	{#if $textsStore.textActive}
@@ -66,13 +77,16 @@
 	bottom:0;
 	left:50%;
 	width: 624px;
+	height:66px;
 	z-index:10;
 	transform:translateX(-50%);
-	text-align: center;
+	text-align: left;
 	padding:12px 0;
 	transition: opacity 100ms ease;
 	max-width:100%;
 	background:#FFF;
+	display:flex;
+	flex-direction: row wrap;
 }
 
 @media (min-width:600px) {
@@ -88,9 +102,12 @@
 	pointer-events: none;
 }
 
-.button {
-	display: block;
-	margin:0 30px;
+.button-wrapper {
+	width:50%;
+}
+
+.button-wrapper + .button-wrapper {
+	text-align:right;
 }
 
 textarea {
@@ -109,12 +126,12 @@ textarea {
 	padding:30px 30px 30px 30px;
 	font-size:13.2px;
 	line-height: 24px;
-	font-family: Courier, "Courier New", monospace;
+	font-family: Overpass Mono, serif;
 }
 
 @media (min-width:600px) {
 	textarea {
-		padding:60px calc(100% / 2 - 312px) 30px calc(100% / 2 - 312px);
+		padding:66px calc(100% / 2 - 312px) 30px calc(100% / 2 - 312px);
 		font-size:16.5px;
 		line-height: 30px;
 	}
