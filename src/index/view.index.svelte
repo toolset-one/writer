@@ -3,6 +3,18 @@
 	import { textsStore, textsStoreNewText } from '../stores/texts-store.js'
 
 	import UiButton from '../ui/ui-button.svelte'
+	import UiOverlayNav from '../ui/ui-overlay-nav.svelte'
+
+	const NAV_ITEMS = [{
+		title: 'Get help',
+		event: 'HELP'
+	}, {
+		title: 'Sign out',
+		event: 'SIGN_OUT'
+	}]
+
+	let navEl,
+		navOpened = false
 
 	onMount(() => {
 		
@@ -34,38 +46,43 @@
 				on:click={e => textsStoreNewText()} />
 		</div>
 
-		<div class="button-wrapper">
+		<div class="button-wrapper" bind:this={navEl}>
 			<UiButton 
 				type="icon"
 				icon="burger"
-				on:click={e => alert('NAV')}/>
+				on:click={e => navOpened = true}/>
 		</div>
 	</div>
 
 </section>
 
+{#if navOpened}
+	<UiOverlayNav options={NAV_ITEMS} element={navEl} on:close={e => navOpened = false} />
+{/if}
+
 
 <style>
 
 .nav-bar {
-	position: absolute;
+	position: fixed;
 	bottom:0;
 	left:50%;
-	width: 624px;
+	width: 636px;
 	height:66px;
 	z-index:10;
 	transform:translateX(-50%);
 	text-align: center;
-	padding:12px 0;
+	padding:12px 6px;
 	transition: opacity 100ms ease;
 	max-width:100%;
 	display:flex;
 	flex-direction: row wrap;
+	background: linear-gradient(to bottom, rgba(250, 249, 247, 1) 0, rgba(250, 249, 247, 1) 54px, rgba(250, 249, 247, 0) 66px);
 }
 
 @media (min-width:600px) {
 	.nav-bar {
-		width: 624px;
+		width: 636px;
 		bottom:auto;
 		top:0;
 	}
@@ -131,7 +148,7 @@ a {
 a:hover {
 	text-decoration: none;
 	color:blue;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 3px 12px rgba(0, 0, 0, .025);
+	box-shadow:0 4px 0 -2px rgba(0, 0, 0, .1),  0 2px 4px rgba(0, 0, 0, .2);
 }
 
 @media (min-width:600px) {

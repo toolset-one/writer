@@ -6,12 +6,8 @@
 
 	export let label = 'No Label'
 	export let type = 'default'
-	export let icon = 'arrow-left'
-	export let hovered = false
-	export let color = '#26231E'
+	export let icon = 'burger'
 	export let link = null
-
-
 
 	let el,
 		hover = false,
@@ -36,7 +32,7 @@
 
 <a
 	href="{link ? link : '#'}"
-	class="type-{type} {hovered ? 'hovered': ''}"
+	class="type-{type}"
 	style="{
 		'--x:'+ (mousePosition.x - boundingRect.left) +'px;' +
 		'--y:'+ (mousePosition.y - boundingRect.top) +'px;'
@@ -53,8 +49,8 @@
 	<span>
 		{#if type === 'default'}	
 			{label}
-		{:else if type === 'icon' || type === 'entry' || type === 'entry has-stopwatch'}
-			<UiIcon type={icon} color="{color}" />
+		{:else if type === 'icon' || type === 'entry'}
+			<UiIcon type={icon} color="{hover ? 'blue' : '#26231E'}" />
 		{/if}	
 	</span>
 </a>
@@ -122,46 +118,6 @@
 		height: 60px;
 	}
 
-	.type-entry {
-		width:36px;
-		height:36px;
-		background:#FFF;
-		box-shadow:none;
-	}
-
-	.type-entry:hover {
-		transform: none;
-		box-shadow: 0 6px 0 -3px rgba(0, 0, 0, .05);
-	}
-
-	.type-entry.hovered {
-		background:#CCC9C4;
-		box-shadow: 0 6px 0 -3px rgba(0, 0, 0, .05);
-	}
-
-
-	.type-entry span {
-		display: block;
-		width:34px;
-		height:34px;
-		padding:11px;
-	}
-
-	.has-stopwatch {
-		border-top-right-radius:0;
-		border-bottom-right-radius:0;
-	}
-
-	.has-stopwatch span {
-		border-top-right-radius:0;
-		border-bottom-right-radius:0;
-		width:35px;
-	}
-
-	.has-stopwatch.hovered {
-		box-shadow: none;
-	}
-
 	span {
 		display: block;
 		position: relative;
@@ -194,7 +150,7 @@
 		top: var(--y);
 		width: 120px;
 		height: 120px;
-		background: radial-gradient(circle closest-side, #FAD000, transparent);
+		background: radial-gradient(circle closest-side, blue, transparent);
 		transform: translate(-50%, -50%) scale(0);
 		transition: transform 500ms ease;
 		pointer-events: none;

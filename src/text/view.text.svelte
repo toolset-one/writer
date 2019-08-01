@@ -4,13 +4,27 @@
 	import { textsStore, textsStoreChangeText } from '../stores/texts-store.js'
 
 	import UiButton from '../ui/ui-button.svelte'
+	import UiOverlayNav from '../ui/ui-overlay-nav.svelte'
+
+
+	const NAV_ITEMS = [{
+		title: 'Get help',
+		event: 'HELP'
+	}, {
+		title: 'Delete this text',
+		event: 'DELETE'
+	}, {
+		title: 'Sign out',
+		event: 'SIGN_OUT'
+	}]
 
 
 	let text = '',
-	debounceTimeOut = null,
-	fadeTimeOut = null,
-	navBarHidden = false
-
+		debounceTimeOut = null,
+		fadeTimeOut = null,
+		navBarHidden = false,
+		navEl,
+		navOpened = false
 
 	onMount(() => {
 		textsStore.subscribe(data => {
@@ -43,37 +57,42 @@
 	}
 </script>
 
-	<div class="nav-bar {navBarHidden ? 'hidden' : ''}" >
-		<div class="button-wrapper">
-			<UiButton 
-				type="icon"
-				icon="arrow-left"
-				link="/" />
-		</div>
-		<div class="button-wrapper">
-			<UiButton 
-				type="icon"
-				icon="burger"
-				on:click={e => alert('NAV')}/>
-		</div>
+<div class="nav-bar {navBarHidden ? 'hidden' : ''}" >
+	<div class="button-wrapper">
+		<UiButton 
+			type="icon"
+			icon="arrow-left"
+			link="/" />
 	</div>
+	<div class="button-wrapper" bind:this={navEl}>
+		<UiButton 
+			type="icon"
+			icon="burger"
+			on:click={e => navOpened = true}/>
+	</div>
+</div>
 
-	{#if $textsStore.textActive}
-		<textarea
-			placeholder="Click here to write text"
-			bind:value={text}
-			on:input={e => textChanged()}
-			on:keydown={e => hideNavBar()}
-			on:mousemove={e => navBarHidden = false}
-			on:blur={e => navBarHidden = false}
-		></textarea>
-	{/if}
+{#if $textsStore.textActive}
+	<textarea
+		placeholder="Click here to write text"
+		bind:value={text}
+		on:input={e => textChanged()}
+		on:keydown={e => hideNavBar()}
+		on:mousemove={e => navBarHidden = false}
+		on:blur={e => navBarHidden = false}
+	></textarea>
+{/if}
+
+
+{#if navOpened}
+	<UiOverlayNav options={NAV_ITEMS} element={navEl} on:close={e => navOpened = false} />
+{/if}
 
 
 <style>
 
 .nav-bar {
-	position: absolute;
+	position: fixed;
 	bottom:0;
 	left:50%;
 	width: 624px;
@@ -84,9 +103,9 @@
 	padding:12px 0;
 	transition: opacity 100ms ease;
 	max-width:100%;
-	background:#FFF;
 	display:flex;
 	flex-direction: row wrap;
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 54px, rgba(255, 255, 255, 0) 66px);
 }
 
 @media (min-width:600px) {
