@@ -9,6 +9,11 @@ export const routerStore = writable({
 })
 
 
+export function routerToIndex() {
+	Page('/')
+}
+
+
 
 Page({
 	hashbang: true

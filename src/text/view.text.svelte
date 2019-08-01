@@ -1,21 +1,21 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { textsStore, textsStoreChangeText } from '../stores/texts-store.js'
+	import { textsStore, textsStoreChangeText, textsStoreDeleteText } from '../stores/texts-store.js'
 
 	import UiButton from '../ui/ui-button.svelte'
 	import UiOverlayNav from '../ui/ui-overlay-nav.svelte'
 
 
 	const NAV_ITEMS = [{
-		title: 'Get help',
-		event: 'HELP'
+		title: 'Open help section',
+		event: 'help'
 	}, {
 		title: 'Delete this text',
-		event: 'DELETE'
+		event: 'delete'
 	}, {
 		title: 'Sign out',
-		event: 'SIGN_OUT'
+		event: 'signout'
 	}]
 
 
@@ -85,7 +85,13 @@
 
 
 {#if navOpened}
-	<UiOverlayNav options={NAV_ITEMS} element={navEl} on:close={e => navOpened = false} />
+	<UiOverlayNav
+		options={NAV_ITEMS}
+		element={navEl}
+		on:close={e => navOpened = false}
+		on:help={e => window.open('https://toolset.one/writer/help/', '_blank')}
+		on:delete={e => textsStoreDeleteText($textsStore.textActive.id)}/>
+		on:signout={e => firebase.auth().signOut()}/>
 {/if}
 
 

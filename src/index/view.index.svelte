@@ -6,11 +6,11 @@
 	import UiOverlayNav from '../ui/ui-overlay-nav.svelte'
 
 	const NAV_ITEMS = [{
-		title: 'Get help',
-		event: 'HELP'
+		title: 'Open help section',
+		event: 'help'
 	}, {
 		title: 'Sign out',
-		event: 'SIGN_OUT'
+		event: 'signout'
 	}]
 
 	let navEl,
@@ -57,7 +57,12 @@
 </section>
 
 {#if navOpened}
-	<UiOverlayNav options={NAV_ITEMS} element={navEl} on:close={e => navOpened = false} />
+	<UiOverlayNav
+		options={NAV_ITEMS}
+		element={navEl}
+		on:close={e => navOpened = false}
+		on:help={e => window.open('https://toolset.one/writer/help/', '_blank')}
+		on:signout={e => firebase.auth().signOut()} />
 {/if}
 
 

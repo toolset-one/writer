@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { routerStore } from '../stores/router-store.js'
+import { routerStore, routerToIndex } from '../stores/router-store.js'
 import { authStore } from '../stores/auth-store.js'
 
 export const textsStore = writable({
@@ -50,7 +50,7 @@ function setListener() {
 						})
 					} else if (change.type === 'removed') {
 						textsStore.update(data => {
-							delete data.json[change.doc.data().slug]
+							delete data.json[change.doc.id]
 							data.array = (Object.keys(data.json).map(el => data.json[el])).sort((a, b) => 
 								(b.updated ? b.updated.toDate() : 0) - (a.updated ? a.updated.toDate() : 0)
 							)
@@ -91,6 +91,17 @@ export function textsStoreChangeText(id, text) {
 		text,
 		excerpt: getExcerpt(text),
 		updated: new Date()
+	})
+}
+
+export function textsStoreDeleteText(id) {
+
+	routerToIndex()
+
+	firebase.db.collection('texts').doc(id).delete().then(res => {
+
+	}).catch(err => {
+		console.log('ERR', err)
 	})
 }
 
