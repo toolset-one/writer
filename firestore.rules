@@ -7,7 +7,7 @@ service cloud.firestore {
     }
 
     match /texts/{text} {
-      allow read, update, delete: if request.auth.uid == text.user;
+      allow read, update, delete: if request.auth.uid == resource.data.user;
       allow create: if request.auth.uid != null;
     }
 
