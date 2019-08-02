@@ -1,3 +1,87 @@
+@font-face {
+    font-family: 'overpass';
+    src: url('/fonts/overpass/overpass-regular-webfont.woff2') format('woff2'),
+         url('/fonts/overpass/overpass-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'overpass';
+    src: url('/fonts/overpass/overpass-italic-webfont.woff2') format('woff2'),
+         url('/fonts/overpass/overpass-italic-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'overpass';
+    src: url('/fonts/overpass/overpass-semibold-webfont.woff2') format('woff2'),
+         url('/fonts/overpass/overpass-semibold-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'overpass';
+    src: url('/fonts/overpass/overpass-semibold-italic-webfont.woff2') format('woff2'),
+         url('/fonts/overpass/overpass-semibold-italic-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'overpass';
+    src: url('/fonts/overpass/overpass-bold-italic-webfont.woff2') format('woff2'),
+         url('/fonts/overpass/overpass-bold-italic-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'overpass';
+    src: url('/fonts/overpass/overpass-bold-webfont.woff2') format('woff2'),
+         url('/fonts/overpass/overpass-bold-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+
+
+@font-face {
+    font-family: 'overpass mono';
+    src: url('/fonts/overpass-mono/overpass-mono-regular-webfont.woff2') format('woff2'),
+         url('/fonts/overpass-mono/overpass-mono-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'overpass mono';
+    src: url('/fonts/overpass-mono/overpass-mono-semibold-webfont.woff2') format('woff2'),
+         url('/fonts/overpass-mono/overpass-mono-semibold-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'overpass mono';
+    src: url('/fonts/overpass-mono/overpass-mono-bold-webfont.woff2') format('woff2'),
+         url('/fonts/overpass-mono/overpass-mono-bold-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'vollkorn';
+    src: url('/fonts/vollkorn/vollkorn-webfont.woff2') format('woff2'),
+         url('/fonts/vollkorn/vollkorn-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
 html, body {
 	position: relative;
 	width: 100%;
@@ -9,7 +93,7 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: Overpass, sans-serif;
+	font-family: overpass, serif;
 	background:#FAF9F7;
 }
 
@@ -47,81 +131,6 @@ input, button, select, textarea {
 input:disabled {
 	color: #ccc;
 }
-
-input[type="range"] {
-	height: 0;
-}
-
-button {
-	background-color: #f4f4f4;
-	outline: none;
-}
-
-button:active {
-	background-color: #ddd;
-}
-
-button:focus {
-	border-color: #666;
-}
-
-
-.button {
-	margin:0;
-	border:#FFF 0 solid;
-	padding:5px 23px;
-	line-height: 24px;
-	font-size: 14px;
-	background:#FFF;
-	border-radius: 4px;
-	box-shadow: none;
-	outline:none;
-	font-weight:400;
-	color:blue;
-	cursor: pointer;
-	box-shadow:0 3px 0 #FFF inset, 0 -2px 0 #AAA inset;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, .2), 0 3px 12px rgba(0, 0, 0, .025);
-	outline-style: solid;
-    outline-color: rgba(0, 0, 255, .25);
-    outline-width: 0;
-    outline-offset: 2px;
-    transition: box-shadow 100ms ease, color 100ms ease, border-color 100ms ease;
-    text-align: center;
-}
-
-.button:hover {
-	border-color:#333;
-	color:#333;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 3px 12px rgba(0, 0, 0, .025);
-	text-decoration: none;
-}
-
-.button:focus {
-	outline-width: 4px;
-}
-
-.button.disabled {
-	color:#999;
-	border-color:#999;
-	box-shadow:0 3px 0 #FFF inset;
-	cursor:default;
-}
-
-.button.disabled:hover {
-	color:#999;
-	border-color:#999;
-	box-shadow:0 3px 0 #FFF inset;
-}
-
-.button-icon {
-	width:36px;
-	height:36px;
-	border-radius: 50%;
-	font-size:20px;
-	line-height: 36px;
-	padding:0 0 4px 0;
-}
-
 
 h2 {
     font-size: 24px;

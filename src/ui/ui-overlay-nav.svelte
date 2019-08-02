@@ -15,8 +15,14 @@
 	onMount(async () => {
 
 		const boundingRect = element.getBoundingClientRect()
-		top = boundingRect.top
-		right = getWindowWidth() - boundingRect.left - boundingRect.width
+
+		if(getWindowWidth() < 600) {
+			top = boundingRect.top + boundingRect.height - (options.length * 42)
+		} else {
+			top = boundingRect.top		
+		}
+
+		right = getWindowWidth() - boundingRect.left - boundingRect.width	
 
 		opened = true
 	})

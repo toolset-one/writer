@@ -126,7 +126,7 @@
 		background:#FFF;
 		padding:0 18px;
 		font-size:14px;
-		font-weight:6s00;
+		font-weight:600;
 		color:#26231E;
 	}
 

@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import { authStore, authSendEmail } from '../stores/auth-store.js'
 
+	import UiButton from '../ui/ui-button.svelte'
+
 	let email = '',
 		emailSuccessfullySent = false
 
@@ -37,13 +39,13 @@
 		<div class="input-wrapper">
 			<input type="email" placeholder=" " bind:value={email}>
 			<label>
-				E-Mail
+				Type your E-Mail here
 			</label>
 		</div>
 
-		<button class="button">
-			Sign In →
-		</button>
+		<UiButton
+			label="Sign In"
+			 on:click={e => submit(e)} />
 
 	</form>
 
@@ -59,7 +61,8 @@
 
 <style>
 .small-container {
-	margin:30px auto;
+	margin:0 auto;
+	padding:30px 0;
 	max-width: 420px;
 	width:80%;
 }
@@ -69,7 +72,7 @@ h2 {
 	padding:0;
 	font-size:24px;
 	line-height: 30px;
-	font-family:georgia;
+	font-family:Vollkorn, sans-serif;
 	font-weight:400;
 }
 
@@ -83,9 +86,9 @@ h2 {
 p {
 	margin:0 0 12px 0;
 	padding:0;
-	font-size:13.2px;
+	font-size:14px;
 	line-height: 24px;
-	font-weight:400;
+	font-weight:500;
 }
 
 @media (min-width: 600px) {
@@ -104,22 +107,6 @@ p {
 	max-width:100%;
 }
 
-.input-wrapper:before, .input-wrapper:after {
-	content:"";
-	display:block;
-	width:2px;
-	height:6px;
-	position: absolute;
-	bottom:0;
-	left:0;
-	background:#333;
-}
-
-.input-wrapper:after {
-	left:auto;
-	right:0;
-}
-
 .input-wrapper label {
 	line-height:12px;
 	position: absolute;
@@ -135,23 +122,25 @@ p {
 }
 
 .input-wrapper input {
+	-webkit-appearance:none;
 	width:100%;
 	max-width:100%;
 	margin:0;
 	border:0;
-	border-bottom:#333 2px solid;
+	border:#CCC9C4 1px solid;
 	padding:14px 17px 14px 17px;
 	line-height: 24px;
-	font-size: 16.5px;
-	background:#FAFAFA;
-	border-radius: 0px;
+	font-size: 16px;
+	background:#FFF;
+	border-radius: 6px;
 	box-shadow: none;
-	caret-color:#333;
-	box-shadow: 0 0 0 100px #FAFAFA inset;
+	caret-color:#26231E;
+	box-shadow: 0 0 0 100px #FFF inset;
 	outline-style: solid;
     outline-color: rgba(0, 0, 255, .25);
     outline-width: 0;
     outline-offset: 2px;
+    color:#26231E;
 }
 
 .input-wrapper input:focus {
@@ -168,12 +157,12 @@ p {
 
 
 .input-wrapper input:not(:placeholder-shown) + label {
-	top:12px;
-	color:#222;
+	top:15px;
+	color:#26231E;
 }
 
 .input-wrapper:hover input, .input-wrapper:focus input {
-	border-color:#333;
+	border-color:#26231E;
 }
 
 </style>

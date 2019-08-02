@@ -77,12 +77,12 @@
 	z-index:10;
 	transform:translateX(-50%);
 	text-align: center;
-	padding:12px 6px;
+	padding:12px;
 	transition: opacity 100ms ease;
 	max-width:100%;
 	display:flex;
 	flex-direction: row wrap;
-	background: linear-gradient(to bottom, rgba(250, 249, 247, 1) 0, rgba(250, 249, 247, 1) 54px, rgba(250, 249, 247, 0) 66px);
+	background: linear-gradient(to top, rgba(250, 249, 247, 1) 0, rgba(250, 249, 247, 1) 54px, rgba(250, 249, 247, 0) 66px);
 }
 
 @media (min-width:600px) {
@@ -90,6 +90,8 @@
 		width: 636px;
 		bottom:auto;
 		top:0;
+		padding:12px 6px;
+		background: linear-gradient(to bottom, rgba(250, 249, 247, 1) 0, rgba(250, 249, 247, 1) 54px, rgba(250, 249, 247, 0) 66px);
 	}
 }
 

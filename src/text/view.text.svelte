@@ -101,24 +101,26 @@
 	position: fixed;
 	bottom:0;
 	left:50%;
-	width: 624px;
+	width: 636px;
 	height:66px;
 	z-index:10;
 	transform:translateX(-50%);
 	text-align: left;
-	padding:12px 0;
+	padding:12px;
 	transition: opacity 100ms ease;
 	max-width:100%;
 	display:flex;
 	flex-direction: row wrap;
-	background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 54px, rgba(255, 255, 255, 0) 66px);
+	background: linear-gradient(to top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 54px, rgba(255, 255, 255, 0) 66px);
 }
 
 @media (min-width:600px) {
 	.nav-bar {
-		width: 624px;
+		width: 636px;
 		bottom:auto;
 		top:0;
+		padding:12px 6px;
+		background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 54px, rgba(255, 255, 255, 0) 66px);
 	}
 }
 
