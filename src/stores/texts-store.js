@@ -74,12 +74,6 @@ export function textsStoreNewText(cb) {
 			text: '',
 			updated: new Date(),
 			created: new Date()
-		}).then(() => {
-			console.log('document created');
-			cb(true)
-		}).catch(err => {
-			console.error('error: ', err);
-			cb(false)
 		})
 	})
 	unsubscribe()
@@ -95,23 +89,16 @@ export function textsStoreChangeText(id, text) {
 }
 
 export function textsStoreDeleteText(id) {
-
 	routerToIndex()
-
-	firebase.db.collection('texts').doc(id).delete().then(res => {
-
-	}).catch(err => {
-		console.log('ERR', err)
-	})
+	firebase.db.collection('texts').doc(id).delete()
 }
 
 
 function getExcerpt(text) {
 
 	if(text.length > 100) {
-
 		if(text.split('\n')[0].length <= 100) {
-			return	text.split('\n')[0]
+			return text.split('\n')[0]
 		}
 
 		const trimmedText = text.substr(0, 100),

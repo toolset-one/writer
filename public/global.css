@@ -81,6 +81,12 @@
 }
 
 
+html {
+    --color-superlight: #FAF9F7;
+    --color-dark: #26231E;
+
+    --breakpoint: 600px;
+}
 
 html, body {
 	position: relative;
@@ -89,12 +95,11 @@ html, body {
 }
 
 body {
-	color: #333;
+	color: var(--color-dark);
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
-	font-family: overpass, serif;
-	background:#FAF9F7;
+	font-family: overpass, sans-serif;
+	background:var(--color-superlight);
 }
 
 * {
@@ -102,7 +107,6 @@ body {
 }
 
 a {
-	color: rgb(0, 100, 200);
 	text-decoration: none;
 }
 
@@ -110,31 +114,13 @@ a:hover {
 	text-decoration: underline;
 }
 
-a:visited {
-	
-}
-
 label {
 	display: block;
 }
 
-input, button, select, textarea {
-	font-family: inherit;
-	font-size: inherit;
-	padding: 0.4em;
-	margin: 0 0 0.5em 0;
-	box-sizing: border-box;
-	border: 1px solid #ccc;
-	border-radius: 2px;
-}
-
-input:disabled {
-	color: #ccc;
-}
-
 h2 {
     font-size: 24px;
-    line-height: 32px;
+    line-height: 30px;
     margin: 0;
     padding: 0;
     font-weight: 400;

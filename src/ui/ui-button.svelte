@@ -1,5 +1,5 @@
 <script>
-	import { onMount, createEventDispatcher } from 'svelte';
+	import { createEventDispatcher } from 'svelte'
 	import UiIcon from './ui-icon.svelte'
 
 	const dispatch = createEventDispatcher()
@@ -34,8 +34,8 @@
 	href="{link ? link : '#'}"
 	class="type-{type}"
 	style="{
-		'--x:'+ (mousePosition.x - boundingRect.left) +'px;' +
-		'--y:'+ (mousePosition.y - boundingRect.top) +'px;'
+		'--x: '+ (mousePosition.x - boundingRect.left) +'px;' +
+		'--y: '+ (mousePosition.y - boundingRect.top) +'px;'
 	}"
 	bind:this={el}
 	on:click={e => click(e)}
@@ -50,7 +50,7 @@
 		{#if type === 'default'}	
 			{label}
 		{:else if type === 'icon' || type === 'entry'}
-			<UiIcon type={icon} color="{hover ? 'blue' : '#26231E'}" />
+			<UiIcon type={icon} color="{hover ? 'blue' :'var(--color-dark)'}" />
 		{/if}	
 	</span>
 </a>
@@ -58,27 +58,27 @@
 <style>
 	a {
 		display:inline-block;
-		position: relative;
+		position:relative;
 		padding:1px;
 		border:0;
-		border-radius: 6px;
+		border-radius:6px;
 		background:#CCC9C4;
-		cursor: pointer;
-		box-shadow: 0 6px 0 -3px rgba(0, 0, 0, .05);
-		transition: all 100ms ease;
+		cursor:pointer;
+		box-shadow:0 6px 0 -3px rgba(0, 0, 0, .05);
+		transition:all 100ms ease;
 		outline:none;
 	}
 
 	a:hover {
-		text-decoration: none;
-		transform: translateY(1px);
-		box-shadow: 0 4px 0 -3px rgba(0, 0, 0, .05);
+		text-decoration:none;
+		transform:translateY(1px);
+		box-shadow:0 4px 0 -3px rgba(0, 0, 0, .05);
 	}
 
 	a:active {
-		background: #99815C;
-		transform: translateY(2px);
-		box-shadow: 0 -4px 0 -3px rgba(0, 0, 0, .05);
+		background:#99815C;
+		transform:translateY(2px);
+		box-shadow:0 -4px 0 -3px rgba(0, 0, 0, .05);
 	}
 
 	a:before {
@@ -87,41 +87,41 @@
 		width:100%;
 		height:100%;
 		background:rgba(0, 0, 0, 0);
-		position: absolute;
+		position:absolute;
 		top:2px;
 		left:0;
-		transition: all 100ms ease;
+		transition:all 100ms ease;
 	}
 
 
 	.type-icon {
 		width:42px;
 		height:42px;
-		border-radius: 50%;
+		border-radius:50%;
 	}
 
 	.type-icon span {
-		display: block;
+		display:block;
 		width:40px;
 		height:40px;
 		padding:0;
 		padding:14px;
-		border-radius: 50%;
+		border-radius:50%;
 	}
 
 	.type-icon em {
-		border-radius: 50%;
+		border-radius:50%;
 	}
 
 	.type-icon em:after, .type-entry em:after {
-		width: 60px;
-		height: 60px;
+		width:60px;
+		height:60px;
 	}
 
 	span {
-		display: block;
-		position: relative;
-		border-radius: 5px;
+		display:block;
+		position:relative;
+		border-radius:5px;
 		line-height:40px;
 		background:#FFF;
 		padding:0 18px;
@@ -134,30 +134,30 @@
 		display:block;
 		width:100%;
 		height:100%;
-		position: absolute;
+		position:absolute;
 		top:0;
 		left:0;
 		background:transparent;
-		border-radius: 6px;
+		border-radius:6px;
 		overflow:hidden;
 	}
 
 	em:after {
-		content: '';
+		content:'';
 		display:block;
-		position: absolute;
-		left: var(--x);
-		top: var(--y);
-		width: 120px;
-		height: 120px;
-		background: radial-gradient(circle closest-side, blue, transparent);
-		transform: translate(-50%, -50%) scale(0);
-		transition: transform 500ms ease;
-		pointer-events: none;
+		position:absolute;
+		left:var(--x);
+		top:var(--y);
+		width:120px;
+		height:120px;
+		background:radial-gradient(circle closest-side, blue, transparent);
+		transform:translate(-50%, -50%) scale(0);
+		transition:transform 500ms ease;
+		pointer-events:none;
 	}
 
 	a:hover em:after {
-		transform: translate(-50%, -50%) scale(1);
+		transform:translate(-50%, -50%) scale(1);
 	}
 
 </style>

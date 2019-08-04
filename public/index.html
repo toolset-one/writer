@@ -29,8 +29,6 @@
 	<!--<script src="/firebase-storage.js"></script>-->
 
 	<script>
-		const loadedTime = Date.now()
-
 		/* if (!navigator.serviceWorker.controller) {
 			navigator.serviceWorker.register('/service-worker.js', {
 			scope: '/'
@@ -59,11 +57,7 @@
 
 		firebase.db.enablePersistence({
 			experimentalTabSynchronization: true
-		}).catch(err => {
-			console.log(err)
 		})
-
-		firebase.auth().onAuthStateChanged(user => {})
 	}
 
 	initFirebase()

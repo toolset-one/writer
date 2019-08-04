@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 const ACTION_CODE_SETTINGS = {
-	url: 'http://'+ (window.location.href.includes('localhost') ? 'localhost:10002' : 'writer.toolset.one') +'/validate-sign-in/',
+	url: 'http://'+ (window.location.href.includes('localhost') ? 'localhost:10002' : 'writer.toolset.one') + '/validate-sign-in/',
 	handleCodeInApp: true
 }
 
@@ -12,10 +12,7 @@ export const authStore = writable({
 })
 
 
-
 export function authInit() {
-	var timeStart = Date.now()
-
 	firebase.auth().onAuthStateChanged(user => {
 		if (user) {
 			authStore.set({
@@ -37,7 +34,6 @@ export function authInit() {
 }
 
 
-
 export function authSendEmail(email, cb) {
 	firebase.auth().sendSignInLinkToEmail(email, ACTION_CODE_SETTINGS).then(() => {
 		window.localStorage.setItem('emailForSignIn', email)
@@ -50,12 +46,11 @@ export function authSendEmail(email, cb) {
 
 
 export function authValidateLink(cb) {
-
 	if (firebase.auth().isSignInWithEmailLink(window.location.href)) {
 	
 		var email = window.localStorage.getItem('emailForSignIn')
 		if (!email) {
-			email = window.prompt('Please provide your email for confirmation');
+			email = window.prompt('Please provide your email for confirmation')
 		}
 
 		firebase.auth().signInWithEmailLink(email, window.location.href).then(res => {

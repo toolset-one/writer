@@ -16,10 +16,6 @@
 	let navEl,
 		navOpened = false
 
-	onMount(() => {
-		
-	})
-
 </script>
 
 <section class="small-container">
@@ -37,22 +33,20 @@
 		{/each}
 	</ul>
 
-	<div class="nav-bar" >
-
+	<nav class="nav-bar" >
 		<div class="button-wrapper">
 			<UiButton 
 				type="icon"
 				icon="plus"
 				on:click={e => textsStoreNewText()} />
 		</div>
-
 		<div class="button-wrapper" bind:this={navEl}>
 			<UiButton 
 				type="icon"
 				icon="burger"
 				on:click={e => navOpened = true}/>
 		</div>
-	</div>
+	</nav>
 
 </section>
 
@@ -85,7 +79,7 @@
 	background: linear-gradient(to top, rgba(250, 249, 247, 1) 0, rgba(250, 249, 247, 1) 54px, rgba(250, 249, 247, 0) 66px);
 }
 
-@media (min-width:600px) {
+@media (min-width: 600px) {
 	.nav-bar {
 		width: 636px;
 		bottom:auto;
@@ -114,7 +108,7 @@
 	max-width: 624px;
 }
 
-@media (min-width:600px) {
+@media (min-width: 600px) {
 	.small-container {
 		margin:0 auto;
 		padding:66px 0;
@@ -132,7 +126,7 @@ li {
 	padding:0;
 }
 
-@media (min-width:600px) {
+@media (min-width: 600px) {
 	li {
 		margin:0 0 24px 0;
 	}
@@ -158,7 +152,7 @@ a:hover {
 	box-shadow:0 4px 0 -2px rgba(0, 0, 0, .1),  0 2px 4px rgba(0, 0, 0, .2);
 }
 
-@media (min-width:600px) {
+@media (min-width: 600px) {
 	a {
 		font-size:16.5px;
 		line-height: 30px;

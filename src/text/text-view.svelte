@@ -26,14 +26,14 @@
 		navEl,
 		navOpened = false
 
-	onMount(() => {
+	onMount(() =>
 		textsStore.subscribe(data => {
 			if(data.textActive) {
 				const newText = data.textActive.text ? data.textActive.text : ''
 				text = newText != text ? newText : text
 			}
 		})
-	})
+	)
 
 
 	function textChanged() {
@@ -44,20 +44,20 @@
 			clearTimeout(debounceTimeOut)
 		}
 
-		debounceTimeOut = setTimeout(() => {
+		debounceTimeOut = setTimeout(() =>
 			textsStoreChangeText(id, text)
-		}, 1000)
+		, 1000)
 	}
 
 
 	function hideNavBar() {
-		fadeTimeOut = setTimeout(() => {
+		fadeTimeOut = setTimeout(() =>
 			navBarHidden = true
-		}, 1000)
+		, 1000)
 	}
 </script>
 
-<div class="nav-bar {navBarHidden ? 'hidden' : ''}" >
+<nav class="nav-bar {navBarHidden ? 'hidden' : ''}" >
 	<div class="button-wrapper">
 		<UiButton 
 			type="icon"
@@ -70,7 +70,7 @@
 			icon="burger"
 			on:click={e => navOpened = true}/>
 	</div>
-</div>
+</nav>
 
 {#if $textsStore.textActive}
 	<textarea
@@ -98,35 +98,35 @@
 <style>
 
 .nav-bar {
-	position: fixed;
+	position:fixed;
 	bottom:0;
 	left:50%;
-	width: 636px;
+	width:636px;
 	height:66px;
 	z-index:10;
 	transform:translateX(-50%);
-	text-align: left;
+	text-align:left;
 	padding:12px;
-	transition: opacity 100ms ease;
+	transition:opacity 100ms ease;
 	max-width:100%;
 	display:flex;
-	flex-direction: row wrap;
-	background: linear-gradient(to top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 54px, rgba(255, 255, 255, 0) 66px);
+	flex-direction:row wrap;
+	background:linear-gradient(to top, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 54px, rgba(255, 255, 255, 0) 66px);
 }
 
 @media (min-width:600px) {
 	.nav-bar {
-		width: 636px;
+		width:636px;
 		bottom:auto;
 		top:0;
 		padding:12px 6px;
-		background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 54px, rgba(255, 255, 255, 0) 66px);
+		background:linear-gradient(to bottom, rgba(255, 255, 255, 1) 0, rgba(255, 255, 255, 1) 54px, rgba(255, 255, 255, 0) 66px);
 	}
 }
 
 .nav-bar.hidden {
 	opacity:0;
-	pointer-events: none;
+	pointer-events:none;
 }
 
 .button-wrapper {
@@ -140,7 +140,7 @@
 textarea {
 	display:block;
 	border:0;
-	position: absolute;
+	position:absolute;
 	top:0;
 	bottom:0;
 	left:0;
@@ -148,19 +148,19 @@ textarea {
 	width:100%;
 	height:100%;
 	background:#FFF;
-	resize: none;
+	resize:none;
 	outline:none;
 	padding:30px 30px 30px 30px;
 	font-size:13.2px;
-	line-height: 24px;
-	font-family: Overpass Mono, serif;
+	line-height:24px;
+	font-family:overpass-mono, monospace;
 }
 
-@media (min-width:600px) {
+@media (min-width: 600px) {
 	textarea {
 		padding:66px calc(100% / 2 - 312px) 30px calc(100% / 2 - 312px);
 		font-size:16.5px;
-		line-height: 30px;
+		line-height:30px;
 	}
 }
 

@@ -12,7 +12,7 @@
 		top,
 		opened = false
 
-	onMount(async () => {
+	onMount(() => {
 
 		const boundingRect = element.getBoundingClientRect()
 
@@ -31,9 +31,9 @@
 
 <nav
 	style="{
-		'--height:'+ (options.length * 42) +'px;'+
-		'top:'+ top +'px;'+
-		'right:'+ right +'px;'
+		'--height: '+ (options.length * 42) +'px;'+
+		'top: '+ top +'px;'+
+		'right: '+ right +'px;'
 	}"
 	class="nav-wrapper {opened ? 'opened' : ''}">
 
@@ -57,23 +57,22 @@
 		width:100%;
 		height:100%;
 		background:rgba(0, 0, 0, .15);
-		/* -webkit-backdrop-filter: blur(1px); */
 		z-index:1000;
 	}
 
 	.nav-wrapper {
-		position: absolute;
+		position:absolute;
 		top:0;
 		right:0;
 		z-index:1010;
 		background:#FFF;
-		border-radius: 6px;
+		border-radius:6px;
 		box-shadow:0 4px 0 -2px rgba(0, 0, 0, .05),  0 3px 6px rgba(0, 0, 0, .1);
 		overflow:hidden;
 		height:36px;
 		width:36px;
 		opacity:0;
-		transition: height 100ms ease, width 100ms ease, opacity 100ms ease;
+		transition:height 100ms ease, width 100ms ease, opacity 100ms ease;
 	}
 
 	.opened {
@@ -83,39 +82,39 @@
 	}
 
 	.border {
-		position: relative;
+		position:relative;
 	}
 
 	.border:after {
 		content:'';
-		position: absolute;
+		position:absolute;
 		bottom:100%;
 		left:12px;
 		right:12px;
-		height: 1px;
+		height:1px;
 		background:#E6E4E1;
 	}
 
-	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+	@media (-webkit-min-device-pixel-ratio:2), (min-resolution:192dpi) { 
 		.border:after {
 			background:#CCC9C4;
 			transform:scale(1, 0.5);
-			transform-origin: 0 100%;
+			transform-origin:0 100%;
 		}
 	}
 
 	ul {
-		list-style: none;
+		list-style:none;
 		margin:0;
 		padding:0;
 	}
 
 	li {
 		font-size:14px;
-		line-height: 42px;
-		white-space: nowrap;
+		line-height:42px;
+		white-space:nowrap;
 		padding:0 12px;
-		cursor: pointer;
+		cursor:pointer;
 		width:210px;
 	}
 
