@@ -4,10 +4,10 @@
 	import { authStore, authInit } from './stores/auth-store.js'
 	import { textsStore, textsStoreInit } from './stores/texts-store.js'
 
-	import ViewSignIn from './sign-in/view.sign-in.svelte'
-	import ViewValidateSignIn from './sign-in/view.validate-sign-in.svelte'
-	import IndexView from './index/view.index.svelte'
-	import TextView from './text/view.text.svelte'
+	import ViewSignIn from './sign-in/sign-in-view.svelte'
+	import ViewValidateSignIn from './sign-in/validate-sign-in-view.svelte'
+	import IndexView from './index/index-view.svelte'
+	import TextView from './text/text-view.svelte'
 
 	onMount(() => {
 		authInit()
