@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { authSendEmail } from '../stores/auth-store.js'
+	import { authStore, authSendEmail } from '../stores/auth-store.js'
 
 	import UiButton from '../ui/ui-button.svelte'
 
@@ -8,10 +8,16 @@
 		emailSuccessfullySent = false
 
 	onMount(() => {
-		fetch('/swBridge').then(res => res.json()).then(data => {
-			if(data.location) {
-				const location = data.location.replace('ios-sign-in', 'validate-sign-in');
-				window.location.href = location
+		authStore.subscribe(data => {
+			if( data.anonymousId ) {
+				firebase.db.collection('token').doc(data.anonymousId).get().then(doc => {
+					if (doc.exists) {
+						firebase.db.collection('token').doc(data.anonymousId).delete()
+						const location = doc.data().location.replace('ios-sign-in', 'validate-sign-in'),
+							locationWithoutId = location.replace(data.anonymousId, '')
+						window.location.href = locationWithoutId
+					}
+				})
 			}
 		})
 	})
@@ -139,21 +145,21 @@ p {
 	caret-color:#26231E;
 	box-shadow:0 0 0 100px #FFF inset;
 	outline-style:solid;
-    outline-color:rgba(0, 0, 255, .25);
-    outline-width:0;
-    outline-offset:2px;
-    color:#26231E;
+		outline-color:rgba(0, 0, 255, .25);
+		outline-width:0;
+		outline-offset:2px;
+		color:#26231E;
 }
 
 .input-wrapper input:focus {
-    outline-width:0px;
+		outline-width:0px;
 }
 
 .input-wrapper input:not(:placeholder-shown) {
 	padding:22px 17px 6px 17px;
 }
 
-.input-wrapper input:not(:placeholder-shown):valid  {
+.input-wrapper input:not(:placeholder-shown):valid	{
 
 }
 

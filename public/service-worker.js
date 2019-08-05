@@ -34,41 +34,14 @@ self.addEventListener('install', e => {
 
 self.addEventListener('fetch', e => {
 
-	const {
-		request,
-		request: {
-			url,
-			method,
-		},
-	} = e
+	e.respondWith(
+		caches.match(e.request).then(res => {
 
-	if(url.match('/swBridge')) {
-		if (method === 'POST') {
-			request.json().then(body => {
-				caches.open('/swBridge').then(cache => {
-					cache.put('/swBridge', new Response(JSON.stringify(body)))
-				})
-			})
-			return new Response('{}')
-		} else {
-			e.respondWith(
-				caches.open('/swBridge').then(cache => {
-					return cache.match('/swBridge').then(res => {
-						return res || new Response('{}')
-					}) || new Response('{}')
-				})
-			)
-		}
-	} else {
-		e.respondWith(
-			caches.match(e.request).then(res => {
+			if (res) {
+				return res
+			}
 
-				if (res) {
-					return res
-				}
-
-				return fetch(e.request)
-			})
-		)
-	}
+			return fetch(e.request)
+		})
+	)
 })

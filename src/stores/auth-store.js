@@ -1,8 +1,7 @@
 import { writable } from 'svelte/store';
 
 
-const isIosStandAlone = 'standalone' in navigator 
-	&& !navigator.standalone
+const isIosStandAlone = 'standalone' in navigator
 	&& (/iphone|ipod|ipad/gi).test(navigator.platform)
 	&& (/Safari/i).test(navigator.appVersion),
 	isLocalhost = window.location.href.includes('localhost'),
@@ -13,11 +12,6 @@ const isIosStandAlone = 'standalone' in navigator
 	urlForSignIn = protocol + '://' + mainUrl + '/' + view + '/'
 
 
-const ACTION_CODE_SETTINGS = {
-	url: urlForSignIn,
-	handleCodeInApp: true
-}
-
 export const authStore = writable({
 	inited: false,
 	hasAuth: false,
@@ -27,10 +21,11 @@ export const authStore = writable({
 
 export function authInit() {
 	firebase.auth().onAuthStateChanged(user => {
-		if (user) {
+		if (user && !user.isAnonymous) {
 			authStore.set({
 				inited: true,
 				hasAuth: true,
+				anonymousId: null,
 				user: {
 					id: user.uid,
 					email: user.email
@@ -40,6 +35,7 @@ export function authInit() {
 			authStore.set({
 				inited: true,
 				hasAuth: false,
+				anonymousId: user ? user.uid : null,
 				user: null
 			})
 		}
@@ -48,13 +44,36 @@ export function authInit() {
 
 
 export function authSendEmail(email, cb) {
-	firebase.auth().sendSignInLinkToEmail(email, ACTION_CODE_SETTINGS).then(() => {
-		window.localStorage.setItem('emailForSignIn', email)
-		cb(true)
-	}).catch(err => {
-		console.log(err)
-		cb(false)
-	})
+
+	window.localStorage.setItem('emailForSignIn', email)
+
+	if( true ) {
+		firebase.auth().signInAnonymously().then(res => {
+
+			firebase.auth().sendSignInLinkToEmail(email, {
+				url: urlForSignIn + res.user.uid + '',
+				handleCodeInApp: true
+			}).then(() => {
+				cb(true)
+			}).catch(err => {
+				console.log(err)
+				cb(false)
+			})
+
+		}).catch(err => {
+			cb(false)
+		})
+	} else {
+		firebase.auth().sendSignInLinkToEmail(email, {
+			url: urlForSignIn,
+			handleCodeInApp: true
+		}).then(() => {
+			cb(true)
+		}).catch(err => {
+			console.log(err)
+			cb(false)
+		})
+	}
 }
 
 

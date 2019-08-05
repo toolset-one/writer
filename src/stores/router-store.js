@@ -33,10 +33,10 @@ Page('/validate-sign-in/', data =>
 	})
 )
 
-Page('/ios-sign-in/', data => 
+Page('/ios-sign-in/:id/', data => 
 	routerStore.set({
 		view: 'ios-sign-in',
-		id: null
+		id: data.params.id
 	})
 )
 

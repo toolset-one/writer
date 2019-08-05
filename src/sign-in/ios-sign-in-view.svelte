@@ -1,12 +1,11 @@
 <script>
 	import { onMount } from 'svelte'
 	import Page from 'page'
-	// import { authValidateLink } from '../stores/auth-store.js'
+	import { routerStore } from '../stores/router-store.js'
 	
 	onMount(() => {
-		fetch('/swBridge', {
-			method: 'POST',
-			body: JSON.stringify({
+		routerStore.subscribe(data => {
+			firebase.db.collection('token').doc(data.id).set({
 				location: window.location.href
 			})
 		})

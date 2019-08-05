@@ -10,6 +10,11 @@ service cloud.firestore {
       allow read, update, delete: if request.auth.uid == resource.data.user;
       allow create: if request.auth.uid != null;
     }
+    
+    match /token/{token} {
+      allow create: if true
+      allow read, delete: if request.auth.uid == token
+    }
 
   }
 }
