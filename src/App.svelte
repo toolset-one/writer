@@ -17,7 +17,9 @@
 
 </script>
 
-{#if $authStore.inited && $authStore.user != null}
+{#if $routerStore.view === 'ios-sign-in'}
+	<ViewIosSignIn />
+{:else if $authStore.inited && $authStore.user != null}
 	
 	{#if $routerStore.view === 'index'}
 		<IndexView />
@@ -29,8 +31,6 @@
 
 	{#if $routerStore.view === 'validate-sign-in'}
 		<ViewValidateSignIn />
-	{:else if $routerStore.view === 'ios-sign-in'}
-		<ViewIosSignIn />
 	{:else}
 		<ViewSignIn />
 	{/if}
