@@ -1,8 +1,8 @@
 {
   "name": "Toolset One Writer",
   "short_name": "Toolset One Writer",
-  "theme_color": "#68B359",
-  "background_color": "#68B359",
+  "theme_color": "#FAF9F7",
+  "background_color": "#FAF9F7",
   "display": "standalone",
   "orientation": "portrait",
   "Scope": "/",
