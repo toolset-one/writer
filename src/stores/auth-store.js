@@ -1,7 +1,20 @@
 import { writable } from 'svelte/store';
 
+
+const isIosStandAlone = 'standalone' in navigator 
+	&& !navigator.standalone
+	&& (/iphone|ipod|ipad/gi).test(navigator.platform)
+	&& (/Safari/i).test(navigator.appVersion),
+	isLocalhost = window.location.href.includes('localhost'),
+
+	view = isIosStandAlone ? 'ios-sign-in' : 'validate-sign-in',
+	mainUrl = isLocalhost ? 'localhost:10002' : 'writer.toolset.one',
+	protocol = isLocalhost ? 'http' : 'https',
+	urlForSignIn = protocol + '://' + mainUrl + '/' + view + '/'
+
+
 const ACTION_CODE_SETTINGS = {
-	url: 'http://'+ (window.location.href.includes('localhost') ? 'localhost:10002' : 'writer.toolset.one') + '/validate-sign-in/',
+	url: urlForSignIn,
 	handleCodeInApp: true
 }
 

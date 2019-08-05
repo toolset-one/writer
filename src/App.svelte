@@ -6,6 +6,7 @@
 
 	import ViewSignIn from './sign-in/sign-in-view.svelte'
 	import ViewValidateSignIn from './sign-in/validate-sign-in-view.svelte'
+	import ViewIosSignIn from './sign-in/ios-sign-in-view.svelte'
 	import IndexView from './index/index-view.svelte'
 	import TextView from './text/text-view.svelte'
 
@@ -28,6 +29,8 @@
 
 	{#if $routerStore.view === 'validate-sign-in'}
 		<ViewValidateSignIn />
+	{:else if $routerStore.view === 'ios-sign-in'}
+		<ViewIosSignIn />
 	{:else}
 		<ViewSignIn />
 	{/if}

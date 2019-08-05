@@ -7,6 +7,15 @@
 	let email = '',
 		emailSuccessfullySent = false
 
+	onMount(() => {
+		fetch('/swBridge').then(res => res.json()).then(data => {
+			if(data.location) {
+				const location = data.location.replace('ios-sign-in', 'validate-sign-in');
+				window.location.href = location
+			}
+		})
+	})
+
 	function submit(e) {
 		e.preventDefault()
 		authSendEmail(email, success => {

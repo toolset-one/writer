@@ -33,6 +33,13 @@ Page('/validate-sign-in/', data =>
 	})
 )
 
+Page('/ios-sign-in/', data => 
+	routerStore.set({
+		view: 'ios-sign-in',
+		id: null
+	})
+)
+
 
 Page('/text/:id/', data => 
 	routerStore.set({
