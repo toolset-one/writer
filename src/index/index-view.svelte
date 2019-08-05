@@ -16,6 +16,10 @@
 	let navEl,
 		navOpened = false
 
+	onMount(() => {
+		document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FAF9F7')
+	})
+
 </script>
 
 <section class="small-container">

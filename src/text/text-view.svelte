@@ -26,14 +26,16 @@
 		navEl,
 		navOpened = false
 
-	onMount(() =>
+	onMount(() => {
 		textsStore.subscribe(data => {
 			if(data.textActive) {
 				const newText = data.textActive.text ? data.textActive.text : ''
 				text = newText != text ? newText : text
 			}
 		})
-	)
+
+		document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFFFF')
+	})
 
 
 	function textChanged() {
