@@ -2,7 +2,7 @@ addEventListener('install', e => {
 	const preCache = async () => {
 		const cache = await caches.open('static')
 		return cache.addAll([
-			'',
+			'/',
 			'/global.css',
 			'/bundle.css',
 			'/firebase-app.js',
