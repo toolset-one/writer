@@ -1,4 +1,4 @@
-/*addEventListener('install', e => {
+addEventListener('install', e => {
 	const preCache = async () => {
 		const cache = await caches.open('static')
 		return cache.addAll([
@@ -8,8 +8,13 @@
 			'/firebase-app.js',
 			'/firebase-auth.js',
 			'/firebase-firestore.js',
-			'/firebase-storage.js',
-			'/bundle.js'
+			'/bundle.js',
+
+			'/fonts/overpass-regular-webfont.woff2',
+			'/fonts/vollkorn-webfont.woff2',
+			'/fonts/overpass-semibold-webfont.woff2',
+			'/fonts/overpass-bold-webfont.woff2',
+			'/fonts/overpass-italic-webfont.woff2'
 		])
 	}
 	e.waitUntil(preCache())
@@ -23,4 +28,4 @@ self.addEventListener('fetch', e => {
 			return matching || fetch(request)
 		})
 	})
-})*/
+})
