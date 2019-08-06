@@ -47,7 +47,7 @@ export function authSendEmail(email, cb) {
 
 	window.localStorage.setItem('emailForSignIn', email)
 
-	if( true ) {
+	if( isIosStandAlone ) {
 		firebase.auth().signInAnonymously().then(res => {
 
 			firebase.auth().sendSignInLinkToEmail(email, {
